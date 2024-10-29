@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Module"""
-from typing import Tuple
-from typing import List
-from typing import Mapping
+from typing import Tuple, List, Mapping, Any, Dict
 import csv
 import math
 
@@ -41,7 +39,7 @@ class Server:
         dataSet = self.dataset()
         return dataSet[tup[0]: tup[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Mapping:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """Function"""
         data = self.get_page(page, page_size)
         dataSet = self.dataset()
