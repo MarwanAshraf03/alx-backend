@@ -36,4 +36,6 @@ class Server:
         assert (type(page_size).__name__ == "int") and (page_size > 0)
         tup = self.index_range(page, page_size)
         dataSet = self.dataset()
+        if tup[1] > len(dataSet):
+            return []
         return dataSet[tup[0]: tup[1]]
