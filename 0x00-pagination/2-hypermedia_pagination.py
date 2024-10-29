@@ -39,7 +39,7 @@ class Server:
         dataSet = self.dataset()
         return dataSet[tup[0]: tup[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Mapping[str, Any]:
         """Function"""
         data = self.get_page(page, page_size)
         dataSet = self.dataset()
