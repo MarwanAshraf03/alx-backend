@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Module"""
 from typing import Tuple
+from typing import List
+from typing import Dict
 import csv
 import math
-from typing import List
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -40,7 +41,7 @@ class Server:
         dataSet = self.dataset()
         return dataSet[tup[0]: tup[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """Function"""
         data = self.get_page(page, page_size)
         dataSet = self.dataset()
