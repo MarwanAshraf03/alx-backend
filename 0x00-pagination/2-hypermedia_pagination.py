@@ -38,14 +38,21 @@ class Server:
         assert (type(page_size).__name__ == "int") and (page_size > 0)
         tup = index_range(page, page_size)
         dataSet = self.dataset()
-
         return dataSet[tup[0]: tup[1]]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Function"""
-        assert (type(page).__name__ == "int") and (page > 0)
-        assert (type(page_size).__name__ == "int") and (page_size > 0)
-        tup = index_range(page, page_size)
+        data = self.get_page(page, page_size)
         dataSet = self.dataset()
-
-        return dataSet[tup[0]: tup[1]]
+        next_page = page + 1 if len(data) else None
+        prev_page = page - 1 if page > 1 else None
+        total_pages = int(len(dataSet)/page_size)
+        ret = {
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
+        }
+        return ret
