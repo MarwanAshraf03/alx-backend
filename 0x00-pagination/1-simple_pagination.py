@@ -6,6 +6,13 @@ import math
 from typing import List
 
 
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """function"""
+    end = page * page_size
+    start = end - page_size
+    return (start, end)
+
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -13,12 +20,6 @@ class Server:
 
     def __init__(self):
         self.__dataset = None
-
-    def index_range(self, page: int, page_size: int) -> Tuple[int, int]:
-        """function"""
-        end = page * page_size
-        start = end - page_size
-        return (start, end)
 
     def dataset(self) -> List[List]:
         """Cached dataset
@@ -34,7 +35,7 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert (type(page).__name__ == "int") and (page > 0)
         assert (type(page_size).__name__ == "int") and (page_size > 0)
-        tup = self.index_range(page, page_size)
+        tup = index_range(page, page_size)
         dataSet = self.dataset()
         if tup[1] > len(dataSet):
             return []
