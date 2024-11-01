@@ -11,7 +11,7 @@ class LIFOCache(BaseCaching):
         super().__init__()
 
     def put(self, key, item):
-        """inputs data in the cache dictionary in FIFO order"""
+        """inputs data in the cache dictionary in LIFO order"""
         if not (key and item):
             return
         klist = list(self.cache_data.keys())
