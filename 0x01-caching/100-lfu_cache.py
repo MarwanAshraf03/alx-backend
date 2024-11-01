@@ -46,6 +46,7 @@ class LFUCache(BaseCaching):
         return self.cache_data[key]
 
     def deleteLFU(self):
+        """handles the delete of the LFU item"""
         llist = {k: v for k, v in
                  sorted(self.freq.items(), key=lambda item: item[1])}
         lf = llist[list(llist.keys())[0]]
