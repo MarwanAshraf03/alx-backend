@@ -3,16 +3,7 @@
 Deletion-resilient hypermedia pagination
 """
 import csv
-import math
-from typing import List, Dict, Tuple
-
-
-
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """function"""
-    end = page * page_size
-    start = end - page_size
-    return (start, end)
+from typing import List, Dict
 
 
 class Server:
@@ -47,6 +38,7 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """function to return data despite removed data"""
         data = []
         dataSet = self.indexed_dataset()
         assert (index >= 0) and (index <= len(dataSet))
