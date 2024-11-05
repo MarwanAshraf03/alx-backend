@@ -14,12 +14,12 @@ users = {
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """runs get_user and puts its result in the global variables g"""
     g.user = get_user()
 
 
-def get_user():
+def get_user() -> Mapping:
     """gets the login_as id and gets user from users dictionary"""
     user_id = request.args.get("login_as")
     if user_id:
