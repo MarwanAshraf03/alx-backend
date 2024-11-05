@@ -9,6 +9,7 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale() -> Union[str, None]:
+    """determine the best match with our supported languages"""
     return request.accept_languages.best_match(['en', 'es'])
 
 
@@ -24,7 +25,7 @@ app.config.from_object(Config)
 
 @app.route("/")
 def hello_world() -> str:
-    """returns 0-index.html template"""
+    """returns 2-index.html template"""
     return render_template("2-index.html")
 
 
