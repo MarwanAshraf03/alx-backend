@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """simple module to render a web page"""
 from flask import Flask, render_template, request, session
-import flask_babel
+from typing import Union
 from flask_babel import Babel
 import babel
 app = Flask(__name__)
@@ -9,7 +9,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> (str | None):
+def get_locale() -> Union[str, None]:
     return request.accept_languages.best_match(['en', 'es'])
 
 
