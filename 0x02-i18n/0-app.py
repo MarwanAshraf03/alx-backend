@@ -5,6 +5,6 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world() -> None:
+def hello_world():
     """returns 0-index.html template"""
     return render_template("0-index.html")
