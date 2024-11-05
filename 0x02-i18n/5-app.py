@@ -2,7 +2,7 @@
 """simple module to render a web page"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
-from typing import Mapping
+from typing import Union, Mapping
 app = Flask(__name__)
 babel = Babel(app)
 users = {
@@ -19,7 +19,7 @@ def before_request() -> None:
     g.user = get_user()
 
 
-def get_user() -> Mapping:
+def get_user() -> Union[Mapping, None]:
     """gets the login_as id and gets user from users dictionary"""
     user_id = request.args.get("login_as")
     if user_id:
