@@ -20,6 +20,7 @@ def get_user():
     # request_args = {**request.view_args, **request.args} if request.view_args else {**request.args}
     user_id = request.args.get("login_as")
     print('All Request args ', user_id)
+    print('All Request args ', type(user_id))
     print('All Request args ',request.args.get("login_as"))
     print('All Request args ', user_id in users.keys())
     return users[user_id] if user_id in users.keys() else None
