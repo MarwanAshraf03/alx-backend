@@ -9,8 +9,7 @@ app = Flask(__name__)
 # @babel.localeselector
 def get_locale() -> Union[str, None]:
     """determine the best match with our supported languages"""
-    # return request.accept_languages.best_match(['en', 'es'])
-    return "fr"
+    return request.accept_languages.best_match(['en', 'es'])
 
 
 class Config:
