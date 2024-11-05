@@ -18,8 +18,8 @@ def before_request():
 
 def get_user():
     user_id = request.args.get("login_as")
-    # return users[user_id] if user_id in users.keys() else None
-    return users[2]
+    return users[user_id] if user_id in users.keys() else None
+    # return users[2]
 
 @babel.localeselector
 def get_locale():
