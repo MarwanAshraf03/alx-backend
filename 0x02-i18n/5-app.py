@@ -21,7 +21,9 @@ def before_request():
 
 def get_user():
     """gets the login_as id and gets user from users dictionary"""
-    user_id = int(request.args.get("login_as"))
+    user_id = request.args.get("login_as")
+    if user_id:
+        user_id = int(user_id)
     return users[user_id] if user_id in users.keys() else None
 
 
