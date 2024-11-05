@@ -6,6 +6,9 @@
   </head>
   <body>
     <h1>{{ _("home_header") }}</h1>
-    <p>{% if g.u %} {{ _("logged_in") }} {% else %} {{ _("not_logged_in") }}</p>
+    <p>
+      {% if g.u %} {{ _("logged_in") }} {% else %} {{ _("not_logged_in") }} {%
+      endif %}
+    </p>
   </body>
 </html>
