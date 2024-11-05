@@ -9,7 +9,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale() -> (str|None):
+def get_locale() -> (str | None):
     return request.accept_languages.best_match(['en', 'es'])
 
 
