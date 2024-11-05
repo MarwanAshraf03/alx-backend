@@ -24,7 +24,6 @@ def get_user():
     user_id = request.args.get("login_as")
     if user_id:
         user_id = int(user_id)
-    print(request.args.get("locale"))
     return users[user_id] if user_id in users.keys() else None
 
 
