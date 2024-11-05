@@ -2,6 +2,7 @@
 """simple module to render a web page"""
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
+from typing import Mapping
 app = Flask(__name__)
 babel = Babel(app)
 users = {
@@ -11,17 +12,18 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
+
 @app.before_request
 def before_request():
+    """runs get_user and puts its result in the global variables g"""
     g.user = get_user()
 
 
-def get_user():
-    # request_args = {**request.view_args, **request.args} if request.view_args else {**request.args}
+def get_user() -> Mapping:
+    """gets the login_as id and gets user from users dictionary"""
     user_id = int(request.args.get("login_as"))
     return users[user_id] if user_id in users.keys() else None
-    # return user_id
-    # g.user = users[user_id] if user_id in users.keys() else None
+
 
 @babel.localeselector
 def get_locale():
