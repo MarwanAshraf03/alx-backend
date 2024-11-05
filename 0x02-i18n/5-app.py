@@ -22,7 +22,7 @@ def get_user():
     print('All Request args ', user_id)
     print('All Request args ', type(user_id))
     print('All Request args ',request.args.get("login_as"))
-    print('All Request args ', user_id in list(users.keys()))
+    print('All Request args ', int(user_id) in list(users.keys()))
     print('All Request args ', list(users.keys()))
     return users[user_id] if user_id in users.keys() else None
     # return user_id
