@@ -5,8 +5,9 @@ from typing import Union
 from flask_babel import Babel, gettext
 app = Flask(__name__)
 
+babel = Babel()
 
-# @babel.localeselector
+@babel.localeselector
 def get_locale() -> Union[str, None]:
     """determine the best match with our supported languages"""
     return request.accept_languages.best_match(['en', 'es'])
