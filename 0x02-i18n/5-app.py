@@ -14,7 +14,7 @@ users = {
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """runs get_user and puts its result in the global variables g"""
     g.user = get_user()
 
@@ -46,7 +46,7 @@ app.config.from_object(Config)
 
 @app.route("/")
 def hello_world() -> str:
-    """returns 2-index.html template"""
+    """returns 5-index.html template"""
     return render_template("5-index.html")
 
 
