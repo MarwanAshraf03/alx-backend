@@ -3,7 +3,6 @@
 from flask import Flask, render_template, request, session
 from typing import Union
 from flask_babel import Babel
-import babel
 app = Flask(__name__)
 babel = Babel(app)
 
