@@ -11,16 +11,16 @@ users = {
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
-# @app.before_request
-# def before_request():
-#     g.user = get_user()
+@app.after_request
+def before_request():
+    g.user = get_user()
 
 
 def get_user():
     user_id = request.args.get("login_as")
-    # # return users[user_id] if user_id in users.keys() else None
+    return users[user_id] if user_id in users.keys() else None
     # return user_id
-    g.user = users[user_id] if user_id in users.keys() else None
+    # g.user = users[user_id] if user_id in users.keys() else None
 
 @babel.localeselector
 def get_locale():
