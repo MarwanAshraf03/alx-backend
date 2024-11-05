@@ -18,7 +18,7 @@ def before_request():
 
 def get_user():
     # request_args = {**request.view_args, **request.args} if request.view_args else {**request.args}
-    print('All Request args ',request.view_args)
+    print('All Request args ',request.args)
     user_id = request.args.get("login_as")
     return users[user_id] if user_id in users.keys() else None
     # return user_id
