@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""simple module"""
+"""simple module to render a web page"""
 from flask import Flask, render_template
 app = Flask(__name__)
 
