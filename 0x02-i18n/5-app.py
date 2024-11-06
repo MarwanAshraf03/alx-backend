@@ -14,12 +14,12 @@ users = {
 
 
 @app.before_request
-def before_request() -> None:
+def before_request():
     """runs get_user and puts its result in the global variables g"""
     g.user = get_user()
 
 
-def get_user() -> Union[Mapping, None]:
+def get_user():
     """gets the login_as id and gets user from users dictionary"""
     user_id = request.args.get("login_as")
     if user_id:
@@ -28,7 +28,7 @@ def get_user() -> Union[Mapping, None]:
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale():
     """determine the best match with our supported languages"""
     locale = request.args.get("locale")
     if locale in Config.LANGUAGES:
@@ -47,7 +47,7 @@ app.config.from_object(Config)
 
 
 @app.route("/")
-def hello_world() -> str:
+def hello_world():
     """returns 5-index.html template"""
     return render_template("5-index.html")
 
