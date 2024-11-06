@@ -36,7 +36,7 @@ def get_locale():
     if locale in Config.LANGUAGES:
         return locale
     elif user_locale:
-        if user_locale["locale"]:
+        if user_locale["locale"] in Config.LANGUAGES:
             return user_locale["locale"]
     elif header_locale:
         return header_locale
