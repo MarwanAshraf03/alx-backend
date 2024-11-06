@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 app = Flask(__name__)
-# babel = Babel(app)
+babel = Babel(app)
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -26,7 +26,7 @@ def get_user():
     return users[user_id] if user_id in users.keys() else None
 
 
-# @babel.localeselector
+@babel.localeselector
 def get_locale():
     """determine the best match with our supported languages"""
     user_locale = get_user()
@@ -53,7 +53,7 @@ class Config:
 
 
 app.config.from_object(Config)
-babel = Babel(app, locale_selector=get_locale)
+# babel = Babel(app, locale_selector=get_locale)
 
 
 @app.route("/")
