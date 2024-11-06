@@ -29,13 +29,13 @@ def get_user():
 @babel.localeselector
 def get_locale():
     """determine the best match with our supported languages"""
-    user_locale = get_user()["locale"]
+    user_locale = get_user()
     header_locale = request.headers.get("locale")
     locale = request.args.get("locale")
     if locale in Config.LANGUAGES:
         return locale
     elif user_locale:
-        return user_locale
+        return user_locale["locale"]
     elif header_locale:
         return header_locale
     return request.accept_languages.best_match(['en', 'fr'])
@@ -49,6 +49,7 @@ class Config:
 
 
 app.config.from_object(Config)
+# babel = Babel(app, locale_selector=get_locale)
 
 
 @app.route("/")
